@@ -1,0 +1,35 @@
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - main
+      - development
+      - feature-tests
+      - feature-code
+      - impl-fibonacci
+      - impl-pin
+  pull_request:
+    branches:
+      - feature-code
+      - development
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar pruebas
+        run: npm test
