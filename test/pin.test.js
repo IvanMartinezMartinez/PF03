@@ -1,9 +1,9 @@
 // JavaScript source code
-// Importamos las funciones de Vitest que usamos para escribir los tests:
+// Funciones de Vitest que usamos para escribir los tests:
 // describe = agrupa tests, it = define un test, expect = comprueba un resultado
 import { describe, it, expect } from 'vitest';
 
-// Importamos la función que vamos a probar 
+// Importamos la función que vamos a probar
 import { esPinValido } from '../src/pin.js';
 
 // Agrupacion
@@ -19,7 +19,7 @@ describe('esPinValido', () => {
         );
     });
 
-    // Solo se admiten 4 o 6 caracteres: probamos vacío, más cortos,
+    // Solo se admiten 4 o 6 caracteres: probamos vacío, más cortos y más largos.
     describe('longitud incorrecta', () => {
         it.each(['', '1', '123', '12345', '1234567', '12345678'])(
             'devuelve false para "%s"',
@@ -61,13 +61,13 @@ describe('esPinValido', () => {
     // Solo vale una cadena. Cualquier otro tipo devuelve false y NO lanza excepción
     describe('tipos incorrectos', () => {
         it.each([
-            null,                    // nulo
-            undefined,               // sin valor
-            1234,                    // número (aunque parezca un PIN)
-            123456,                  // número de 6 cifras
-            true,                    // booleano
-            {},                      // objeto
-            ['1', '2', '3', '4'],    // array de caracteres
+            null,                  // nulo
+            undefined,             // sin valor
+            1234,                  // número (aunque parezca un PIN)
+            123456,                // número de 6 cifras
+            true,                  // booleano
+            {},                    // objeto
+            ['1', '2', '3', '4'],  // array de caracteres
         ])('devuelve false para %j sin lanzar excepción', (pin) => {
             // Comprueba que la función no falla con un error...
             expect(() => esPinValido(pin)).not.toThrow();
