@@ -10,3 +10,12 @@
 ```bash
 npm install
 npm test
+
+**4. Crea los stubs en `src/`:**
+Crea la carpeta `src` y los archivos mínimos exportados para que puedan importarse sin dar error de módulo no encontrado:
+
+* `src/fibonacci.js`:
+```javascript
+export function fibonacci(n) {
+  // Pendiente de implementar por Desarrollador 2
+}
