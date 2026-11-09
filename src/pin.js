@@ -1,3 +1,6 @@
 export function esPinValido(pin) {
-    // Pendiente de implementar por Desarrollador 1
+    if (typeof pin !== 'string') return false;
+    if (!/^(?:\d{4}|\d{6})$/.test(pin)) return false;
+
+    return new Set(pin).size > 1;
 }
